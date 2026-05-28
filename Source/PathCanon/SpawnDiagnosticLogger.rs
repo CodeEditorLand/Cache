@@ -19,8 +19,11 @@ pub fn Fn() {
 
 			log::debug!(
 				target:"path-canon",
+
 				"entries={} weighted={}",
+
 				Snapshot.Entries,
+
 				Snapshot.WeightedSize
 			);
 		}

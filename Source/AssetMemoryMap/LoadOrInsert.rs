@@ -46,9 +46,13 @@ pub fn Fn(Path:&Path) -> std::io::Result<Arc<Entry::Struct>> {
 
 	log::debug!(
 		target:"asset-cache",
+
 		"mmap insert path={} bytes={} brotli={}",
+
 		Path.display(),
+
 		Length,
+
 		MarkerEntry.Brotli.is_some()
 	);
 
