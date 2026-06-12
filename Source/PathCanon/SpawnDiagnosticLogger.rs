@@ -6,6 +6,11 @@ use std::time::Duration;
 
 use crate::PathCanon::Stats;
 
+/// Spawn a background tokio task that logs path-canon cache stats every
+/// 30 seconds under the `path-canon` log target.
+///
+/// Optional - call from the embedder's runtime setup when diagnostics
+/// are desired.
 pub fn Fn() {
 	tokio::spawn(async {
 		let mut Interval = tokio::time::interval(Duration::from_secs(30));
