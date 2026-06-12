@@ -2,10 +2,10 @@
 
 use crate::AssetMemoryMap::{CacheStats, Map};
 
-/// Capture a diagnostic snapshot of the asset cache.
+/// Captures a diagnostic snapshot of the asset cache.
 ///
-/// Iterates the entire map to collect entry count, byte totals, and
-/// brotli-sibling statistics.
+/// Iterates the entire map to collect the entry count, total
+/// uncompressed bytes, and brotli-sibling statistics.
 pub fn Fn() -> CacheStats::Struct {
 	let mut Bytes = 0usize;
 

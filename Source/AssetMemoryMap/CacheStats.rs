@@ -1,6 +1,7 @@
-//! Snapshot of asset-cache occupancy. Returned by [`super::Stats::Fn`].
+//! Snapshot of asset-cache occupancy, returned by [`super::Stats::Fn`].
 
-/// Snapshot of asset-cache occupancy. Returned by [`super::Stats::Fn`].
+/// Occupancy snapshot returned by [`super::Stats::Fn`]. Records entry
+/// count, brotli-sibling availability, and total bytes.
 #[derive(Debug, Clone, Copy)]
 pub struct Struct {
 	/// Number of entries currently in the cache.

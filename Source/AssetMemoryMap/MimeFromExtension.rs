@@ -1,10 +1,10 @@
-//! Map a file extension to its IANA media type. Mirrors the inline
+//! Maps a file extension to its IANA media type. Mirrors the inline
 //! helper Mountain uses in `Binary/Build/Scheme.rs` so the cache layer
 //! is self-contained.
 
 use std::path::Path;
 
-/// Map a file extension to its IANA media type string.
+/// Maps a file extension to its IANA media type string.
 ///
 /// Mirrors the inline helper Mountain uses in
 /// `Binary/Build/Scheme.rs` so the cache layer is self-contained.

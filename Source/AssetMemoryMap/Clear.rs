@@ -1,9 +1,9 @@
-//! Clear the entire asset cache. Called on shutdown or on an explicit
+//! Clears the entire asset cache. Called on shutdown or on an explicit
 //! flush signal.
 
 use crate::AssetMemoryMap::Map;
 
-/// Clear every entry from the asset cache.
+/// Clears every entry from the asset cache.
 ///
 /// Called on shutdown or on an explicit flush signal from the
 /// embedder.

@@ -1,4 +1,4 @@
-//! Load `Path` into the cache (or return the existing entry).
+//! Loads `Path` into the cache (or returns the existing entry).
 //!
 //! Returns `Err` only if the file cannot be opened or memory-mapped;
 //! missing brotli siblings are silently ignored (best-effort
@@ -13,7 +13,7 @@ use memmap2::Mmap;
 
 use crate::AssetMemoryMap::{Entry, Map, MimeFromExtension};
 
-/// Load the file at `Path` into the asset cache, or return the
+/// Loads the file at `Path` into the asset cache, or returns the
 /// existing cached entry.
 ///
 /// # Errors

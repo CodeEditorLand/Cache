@@ -1,10 +1,10 @@
-//! Canonicalise without caching. For one-shot calls where the result
+//! Canonicalises without caching. For one-shot calls where the result
 //! is immediately discarded; avoids polluting the cache with paths
 //! that will not repeat.
 
 use std::path::{Path, PathBuf};
 
-/// Canonicalise `Path` without caching the result.
+/// Canonicalises `Path` without caching the result.
 ///
 /// Useful for one-shot calls where the resolved path is immediately
 /// discarded; avoids polluting the cache with paths that will not

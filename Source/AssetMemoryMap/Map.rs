@@ -7,7 +7,7 @@ use dashmap::DashMap;
 
 use crate::AssetMemoryMap::Entry;
 
-/// Return or lazily initialise the process-global asset cache map.
+/// Returns or lazily initialises the process-global asset cache map.
 ///
 /// The map is a [`DashMap`] keyed by [`PathBuf`] with
 /// [`Arc`]<[`Entry::Struct`]> values, created once on first access via

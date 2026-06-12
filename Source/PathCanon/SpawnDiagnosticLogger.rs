@@ -1,15 +1,15 @@
-//! Spawn a tokio task that logs cache stats every 30s under the
-//! `path-canon` target. Optional - call from the embedder's runtime
-//! setup when the user has the `path-canon` tag enabled.
+//! Spawns a tokio task that logs cache stats every 30s under the
+//! `path-canon` target. Optional — call from the embedder's runtime
+//! setup when diagnostics are desired.
 
 use std::time::Duration;
 
 use crate::PathCanon::Stats;
 
-/// Spawn a background tokio task that logs path-canon cache stats every
+/// Spawns a background tokio task that logs path-canon cache stats every
 /// 30 seconds under the `path-canon` log target.
 ///
-/// Optional - call from the embedder's runtime setup when diagnostics
+/// Optional — call from the embedder's runtime setup when diagnostics
 /// are desired.
 pub fn Fn() {
 	tokio::spawn(async {

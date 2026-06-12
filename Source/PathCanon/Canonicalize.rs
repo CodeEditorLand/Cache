@@ -1,4 +1,4 @@
-//! Canonicalise via the cache. Returns the cached entry on hit; runs
+//! Canonicalises via the cache. Returns the cached entry on hit; runs
 //! `dunce::canonicalize` on miss and caches the result.
 //!
 //! `dunce::canonicalize` is preferred over `std::fs::canonicalize`
@@ -9,7 +9,7 @@ use std::path::{Path, PathBuf};
 
 use crate::PathCanon::Cache::CACHE;
 
-/// Canonicalise `Path` via the process-wide cache.
+/// Canonicalises `Path` via the process-wide cache.
 ///
 /// Returns the cached [`PathBuf`] on hit; runs `dunce::canonicalize`
 /// on miss and caches the result for subsequent lookups.

@@ -5,9 +5,11 @@ use memmap2::Mmap;
 
 /// Single memory-mapped asset cache entry.
 ///
-/// Holds the file-backed [`Mmap`](memmap2::Mmap) plus metadata computed
-/// once at load time. The caller must keep the `Arc<Struct>` alive for
-/// the lifetime of any response body that borrows the mapping slice.
+/// Holds the file-backed [`Mmap`](memmap2::Mmap) plus metadata
+/// (MIME type, content length, optional brotli sibling, ETag) computed
+/// once at load time. The caller must keep the [`Arc`]<[`Struct`]>
+/// alive for the lifetime of any response body that borrows the mapping
+/// slice.
 pub struct Struct {
 	/// The MemoryMap mapping itself. Keep alive as long as any webview
 	/// body references it.
@@ -31,15 +33,17 @@ pub struct Struct {
 }
 
 impl Struct {
-	/// Borrow the entire mapping as a slice. Caller keeps
-	/// `Arc<Struct>` alive for the lifetime of any response body that
+	/// Borrows the entire mapping as a byte slice. The caller must keep the
+	/// [`Arc`]<[`Struct`]> alive for the lifetime of any response body that
 	/// captures the slice.
 	pub fn AsSlice(&self) -> &[u8] { &self.Mapping[..] }
 
-	/// Borrow the brotli-precompressed sibling if present.
+	/// Borrows the brotli-precompressed sibling mapping, if present.
 	pub fn AsBrotliSlice(&self) -> Option<&[u8]> { self.Brotli.as_ref().map(|M| &M[..]) }
 
-	/// Length of the brotli sibling. Useful for `Content-Length` when
-	/// serving the precompressed payload.
+	/// Returns the byte length of the brotli-precompressed sibling, if any.
+	///
+	/// Useful for setting the `Content-Length` header when serving the
+	/// precompressed payload.
 	pub fn BrotliLength(&self) -> Option<usize> { self.Brotli.as_ref().map(|M| M.len()) }
 }

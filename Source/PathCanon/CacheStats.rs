@@ -1,6 +1,8 @@
-//! Diagnostic snapshot of the canonical-path cache.
+//! Diagnostic snapshot of the canonical-path cache, returned by
+//! [`super::Stats::Fn`].
 
-/// Diagnostic snapshot of the canonical-path cache.
+/// Occupancy snapshot returned by [`super::Stats::Fn`]. Records entry
+/// count and weighted-size estimate from the moka cache.
 #[derive(Debug, Clone, Copy)]
 pub struct Struct {
 	/// Number of entries currently held in the cache.
