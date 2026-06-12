@@ -41,6 +41,7 @@ use crate::AssetMemoryMap::{Entry, Map, MimeFromExtension};
 ///
 /// ```rust,no_run
 /// use std::path::Path;
+///
 /// use land_cache::AssetMemoryMap::LoadOrInsert;
 ///
 /// let entry = LoadOrInsert::Fn(Path::new("/path/to/asset.js")).unwrap();

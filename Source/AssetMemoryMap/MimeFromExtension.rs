@@ -19,6 +19,7 @@ use std::path::Path;
 ///
 /// ```rust,no_run
 /// use std::path::Path;
+///
 /// use land_cache::AssetMemoryMap::MimeFromExtension;
 ///
 /// let mime = MimeFromExtension::Fn(Path::new("index.html"));

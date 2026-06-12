@@ -19,6 +19,7 @@ use crate::AssetMemoryMap::{Entry, Map};
 ///
 /// ```rust,no_run
 /// use std::path::Path;
+///
 /// use land_cache::AssetMemoryMap::Invalidate;
 ///
 /// let old = Invalidate::Fn(Path::new("/path/to/chunk.js"));

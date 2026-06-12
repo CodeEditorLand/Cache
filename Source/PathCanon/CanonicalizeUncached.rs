@@ -22,6 +22,7 @@ use std::path::{Path, PathBuf};
 ///
 /// ```rust,no_run
 /// use std::path::Path;
+///
 /// use land_cache::PathCanon::CanonicalizeUncached;
 ///
 /// let resolved = CanonicalizeUncached::Fn(Path::new("/tmp/some-file")).unwrap();

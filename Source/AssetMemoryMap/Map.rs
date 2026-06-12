@@ -19,10 +19,11 @@ use crate::AssetMemoryMap::Entry;
 ///
 /// ```rust,no_run
 /// use std::path::PathBuf;
+///
 /// use land_cache::AssetMemoryMap::Map;
 ///
 /// let map = Map::Fn();
-/// map.insert(PathBuf::from("key"), /* Arc<Entry::Struct> */);
+/// map.insert(PathBuf::from("key") /* Arc<Entry::Struct> */);
 /// ```
 pub fn Fn() -> &'static DashMap<PathBuf, Arc<Entry::Struct>> {
 	use std::sync::OnceLock;

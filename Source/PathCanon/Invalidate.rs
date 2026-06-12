@@ -9,13 +9,13 @@ use crate::PathCanon::Cache::CACHE;
 ///
 /// # Parameters
 ///
-/// * `Path` — the lexical path whose cached canonicalisation should be
-///   removed.
+/// * `Path` — the lexical path whose cached canonicalisation should be removed.
 ///
 /// # Examples
 ///
 /// ```rust,no_run
 /// use std::path::Path;
+///
 /// use land_cache::PathCanon::Invalidate;
 ///
 /// Invalidate::Fn(Path::new("/tmp/old-path"));

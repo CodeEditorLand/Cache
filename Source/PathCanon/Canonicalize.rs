@@ -28,6 +28,7 @@ use crate::PathCanon::Cache::CACHE;
 ///
 /// ```rust,no_run
 /// use std::path::Path;
+///
 /// use land_cache::PathCanon::Canonicalize;
 ///
 /// let canonical = Canonicalize::Fn(Path::new("/tmp/some-file")).unwrap();

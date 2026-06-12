@@ -8,10 +8,7 @@
 /// ```rust,no_run
 /// use land_cache::PathCanon::CacheStats;
 ///
-/// let stats = CacheStats::Struct {
-///     Entries: 42,
-///     WeightedSize: 65536,
-/// };
+/// let stats = CacheStats::Struct { Entries:42, WeightedSize:65536 };
 /// ```
 #[derive(Debug, Clone, Copy)]
 pub struct Struct {
