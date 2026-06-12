@@ -26,6 +26,11 @@
 //!
 //! Both caches are additive performance helpers; consumers continue to
 //! function with any one of them disabled.
+//!
+//! # Architecture
+//!
+//! See [`Documentation/GitHub/Architecture.md`](https://github.com/editor-land/Land/docs/Architecture.md)
+//! for the broader Land system architecture that these caches serve.
 
 pub mod AssetMemoryMap;
 
