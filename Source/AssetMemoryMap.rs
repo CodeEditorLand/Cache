@@ -1,3 +1,5 @@
+//! # AssetMemoryMap
+//!
 //! Memory-mapped asset cache for the bundled workbench (and any other
 //! static-disk asset served via `vscode-file://`, `tauri://`, or
 //! `land://` scheme handlers).
@@ -22,7 +24,7 @@
 //! ## Concurrency / eviction
 //!
 //! `DashMap` shards are wait-free for read; first-load races on one
-//! shard lock. No eviction today - the bundle is bounded by ~80 MB.
+//! shard lock. No eviction today — the bundle is bounded by ~80 MB.
 
 pub mod CacheStats;
 

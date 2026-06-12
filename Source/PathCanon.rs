@@ -1,8 +1,8 @@
-//! Process-wide canonical-path cache.
+//! # PathCanon
 //!
-//! Keyed by lexical input path; value is the result of
-//! `dunce::canonicalize`. Hits skip the syscall; misses run it and
-//! cache the result.
+//! Process-wide canonical-path cache keyed by lexical input path.
+//! Values are the result of `dunce::canonicalize`; hits skip the
+//! syscall, misses run it and cache the result.
 //!
 //! The fs-scope security gates that Mountain layers around every
 //! incoming path canonicalise repeatedly during boot: 113 extension

@@ -1,7 +1,20 @@
-//! Snapshot of asset-cache occupancy, returned by [`super::Stats::Fn`].
-
-/// Occupancy snapshot returned by [`super::Stats::Fn`]. Records entry
-/// count, brotli-sibling availability, and total bytes.
+/// Occupancy snapshot returned by [`super::Stats::Fn`].
+///
+/// Records the entry count, brotli-sibling availability, and total
+/// bytes across all cached assets at the moment the snapshot was taken.
+///
+/// # Examples
+///
+/// ```rust,no_run
+/// use land_cache::AssetMemoryMap::CacheStats;
+///
+/// let stats = CacheStats::Struct {
+///     Entries: 128,
+///     BrotliEntries: 96,
+///     Bytes: 80_000_000,
+///     BrotliBytes: 32_000_000,
+/// };
+/// ```
 #[derive(Debug, Clone, Copy)]
 pub struct Struct {
 	/// Number of entries currently in the cache.

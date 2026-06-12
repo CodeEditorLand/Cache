@@ -1,7 +1,3 @@
-//! Maps a file extension to its IANA media type. Mirrors the inline
-//! helper Mountain uses in `Binary/Build/Scheme.rs` so the cache layer
-//! is self-contained.
-
 use std::path::Path;
 
 /// Maps a file extension to its IANA media type string.
@@ -9,6 +5,25 @@ use std::path::Path;
 /// Mirrors the inline helper Mountain uses in
 /// `Binary/Build/Scheme.rs` so the cache layer is self-contained.
 /// Unknown extensions fall back to `application/octet-stream`.
+///
+/// # Parameters
+///
+/// * `Path` — the file path whose extension determines the MIME type.
+///
+/// # Returns
+///
+/// A `&'static str` with the IANA media type (and charset where
+/// applicable), or `application/octet-stream` for unknown extensions.
+///
+/// # Examples
+///
+/// ```rust,no_run
+/// use std::path::Path;
+/// use land_cache::AssetMemoryMap::MimeFromExtension;
+///
+/// let mime = MimeFromExtension::Fn(Path::new("index.html"));
+/// assert_eq!(mime, "text/html; charset=utf-8");
+/// ```
 pub fn Fn(Path:&Path) -> &'static str {
 	match Path.extension().and_then(|S| S.to_str()).unwrap_or("") {
 		"js" | "mjs" | "cjs" => "application/javascript; charset=utf-8",

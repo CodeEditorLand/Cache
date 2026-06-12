@@ -1,6 +1,3 @@
-//! Single MemoryMap-backed asset cache entry. Holds the file-backed
-//! mapping plus metadata computed once at load time.
-
 use memmap2::Mmap;
 
 /// Single memory-mapped asset cache entry.
@@ -10,6 +7,14 @@ use memmap2::Mmap;
 /// once at load time. The caller must keep the [`Arc`]<[`Struct`]>
 /// alive for the lifetime of any response body that borrows the mapping
 /// slice.
+///
+/// # Fields
+///
+/// * `Mapping` — the memory-mapped file contents.
+/// * `Mime` — cached MIME type derived from the file extension.
+/// * `Length` — file size at memory-map time.
+/// * `Brotli` — optional pre-compressed brotli sibling mapping.
+/// * `ETag` — weak validator from file mtime + size.
 pub struct Struct {
 	/// The MemoryMap mapping itself. Keep alive as long as any webview
 	/// body references it.
