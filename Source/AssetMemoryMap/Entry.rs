@@ -23,6 +23,11 @@ pub struct Struct {
 	/// Optional pre-brotli-compressed sibling (path with `.br`
 	/// suffix). `None` if no sibling existed at load time.
 	pub Brotli:Option<Mmap>,
+
+	/// Weak validator derived from file mtime + size at MemoryMap time
+	/// (`W/"<mtime-ms-hex>-<size-hex>"`). Usable directly as an `ETag`
+	/// response header value for `If-None-Match` revalidation.
+	pub ETag:String,
 }
 
 impl Struct {

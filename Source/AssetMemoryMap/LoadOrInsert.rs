@@ -28,7 +28,18 @@ pub fn Fn(Path:&Path) -> std::io::Result<Arc<Entry::Struct>> {
 
 	let File = std::fs::File::open(Path)?;
 
-	let Length = File.metadata()?.len() as usize;
+	let Metadata = File.metadata()?;
+
+	let Length = Metadata.len() as usize;
+
+	let ModifiedMs = Metadata
+		.modified()
+		.ok()
+		.and_then(|Time| Time.duration_since(std::time::UNIX_EPOCH).ok())
+		.map(|Duration| Duration.as_millis() as u64)
+		.unwrap_or(0);
+
+	let ETag = format!("W/\"{:x}-{:x}\"", ModifiedMs, Length);
 
 	// SAFETY: caller agrees the file is not truncated underneath us
 	// for the lifetime of the MemoryMap. The bundle directory is
@@ -50,7 +61,7 @@ pub fn Fn(Path:&Path) -> std::io::Result<Arc<Entry::Struct>> {
 
 	let Mime = MimeFromExtension::Fn(Path);
 
-	let MarkerEntry = Arc::new(Entry::Struct { Mapping, Mime, Length, Brotli });
+	let MarkerEntry = Arc::new(Entry::Struct { Mapping, Mime, Length, Brotli, ETag });
 
 	log::debug!(
 		target:"asset-cache",
