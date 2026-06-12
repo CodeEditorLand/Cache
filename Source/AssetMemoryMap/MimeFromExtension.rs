@@ -4,6 +4,11 @@
 
 use std::path::Path;
 
+/// Map a file extension to its IANA media type string.
+///
+/// Mirrors the inline helper Mountain uses in
+/// `Binary/Build/Scheme.rs` so the cache layer is self-contained.
+/// Unknown extensions fall back to `application/octet-stream`.
 pub fn Fn(Path:&Path) -> &'static str {
 	match Path.extension().and_then(|S| S.to_str()).unwrap_or("") {
 		"js" | "mjs" | "cjs" => "application/javascript; charset=utf-8",

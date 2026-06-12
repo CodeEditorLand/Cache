@@ -13,6 +13,14 @@ use memmap2::Mmap;
 
 use crate::AssetMemoryMap::{Entry, Map, MimeFromExtension};
 
+/// Load the file at `Path` into the asset cache, or return the
+/// existing cached entry.
+///
+/// # Errors
+///
+/// Returns `Err` only if the file cannot be opened or memory-mapped;
+/// missing brotli siblings are silently ignored (best-effort
+/// optimisation).
 pub fn Fn(Path:&Path) -> std::io::Result<Arc<Entry::Struct>> {
 	if let Some(Existing) = Map::Fn().get(Path) {
 		return Ok(Existing.clone());

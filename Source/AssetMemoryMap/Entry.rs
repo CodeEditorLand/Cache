@@ -3,6 +3,11 @@
 
 use memmap2::Mmap;
 
+/// Single memory-mapped asset cache entry.
+///
+/// Holds the file-backed [`Mmap`](memmap2::Mmap) plus metadata computed
+/// once at load time. The caller must keep the `Arc<Struct>` alive for
+/// the lifetime of any response body that borrows the mapping slice.
 pub struct Struct {
 	/// The MemoryMap mapping itself. Keep alive as long as any webview
 	/// body references it.
