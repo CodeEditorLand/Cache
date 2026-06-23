@@ -298,8 +298,8 @@ recomputed. It never changes what happens — only how fast.
 | ------------------ | ------------------- | --------------------------------------------------------------------- |
 | **Mountain** ⛰️    | `AssetMemoryMap`    | Scheme handler asset serving to `Sky`/`Wind` WebView                  |
 | **Mountain** ⛰️    | `PathCanon`         | FS-scope security gates — extension paths, git scopes, file imports   |
-| **Wind** 🌬️        | `AssetMemoryMap`    | Per-body zero-copy response in `Content-Type: application/javascript` |
-| **Maintain** 🔧    | `AssetMemoryMap`    | Brotli sibling pre-bake — `.br` files loaded by LoadOrInsert          |
+| **Wind** 🍃        | `AssetMemoryMap`    | Per-body zero-copy response in `Content-Type: application/javascript` |
+| **Maintain** 💪🏻    | `AssetMemoryMap`    | Brotli sibling pre-bake — `.br` files loaded by LoadOrInsert          |
 
 ### Key Dependencies
 
@@ -381,8 +381,8 @@ Cache is designed to integrate with:
 | Target          | Integration                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ |
 | **Mountain** ⛰️ | Primary consumer — scheme handler asset serving and fs-scope security gates          |
-| **Wind** 🌬️     | Zero-copy response body serving via WebView scheme handlers                          |
-| **Maintain** 🔧 | Brotli sibling pre-bake pipeline — `.br` files auto-loaded by `LoadOrInsert`         |
+| **Wind** 🍃     | Zero-copy response body serving via WebView scheme handlers                          |
+| **Maintain** 💪🏻 | Brotli sibling pre-bake pipeline — `.br` files auto-loaded by `LoadOrInsert`         |
 | **Any Land embedder** | `AssetMemoryMap` and `PathCanon` are embedder-agnostic — consume from any Rust crate via cargo dependency |
 
 ---
