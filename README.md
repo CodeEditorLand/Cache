@@ -54,8 +54,8 @@ Process-Wide Caching Primitives for Land&#x2001;🏞️
 > optional - everything still works if you turn them off, it's just slower.\"_
 
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://github.com/CodeEditorLand/Cache/tree/Current/LICENSE)
-[<img src="https://editor.land/Image/Rust.svg" width="14" alt="Rust" />](https://www.rust-lang.org/)&#x2001;[![Crates.io](https://img.shields.io/crates/v/Cache.svg)](https://crates.io/crates/Cache)
-[<img src="https://editor.land/Image/Rust.svg" width="14" alt="Rust" />](https://www.rust-lang.org/)&#x2001;[![Rust Version](https://img.shields.io/badge/Rust-1.95+-orange.svg)](https://www.rust-lang.org/)
+[<img src="https://editor.land/Image/Rust.svg" width="14" alt="Rust" />](https://www.rust-lang.org/) [![Crates.io](https://img.shields.io/crates/v/Cache.svg)](https://crates.io/crates/Cache)
+[<img src="https://editor.land/Image/Rust.svg" width="14" alt="Rust" />](https://www.rust-lang.org/) [![Rust Version](https://img.shields.io/badge/Rust-1.95+-orange.svg)](https://www.rust-lang.org/)
 [![Moka](https://img.shields.io/badge/Moka-Cache-blue.svg)](https://github.com/moka-rs/moka)
 [![memmap2](https://img.shields.io/badge/memmap2-MMap-blue.svg)](https://github.com/RazrFalcon/memmap2-rs)
 
@@ -158,7 +158,7 @@ when files change and you want the cache to pick up new content immediately.
 
 ---
 
-## System Architecture&#x2001;
+## System Architecture
 
 ```mermaid
 graph LR
