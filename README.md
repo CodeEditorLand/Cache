@@ -53,13 +53,36 @@ Process-Wide Caching Primitives for Land&#x2001;🏞️
 > copy. Canonical paths get resolved once and remembered. Both caches are
 > optional - everything still works if you turn them off, it's just slower.\"_
 
-[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://github.com/CodeEditorLand/Cache/tree/Current/LICENSE)
-[<img src="https://editor.land/Image/Rust.svg" width="14" alt="Rust" />](https://www.rust-lang.org/) [![Crates.io](https://img.shields.io/crates/v/Cache.svg)](https://crates.io/crates/Cache)
-[<img src="https://editor.land/Image/Rust.svg" width="14" alt="Rust" />](https://www.rust-lang.org/) [![Rust Version](https://img.shields.io/badge/Rust-1.95+-orange.svg)](https://www.rust-lang.org/)
-[![Moka](https://img.shields.io/badge/Moka-Cache-blue.svg)](https://github.com/moka-rs/moka)
-[![memmap2](https://img.shields.io/badge/memmap2-MMap-blue.svg)](https://github.com/RazrFalcon/memmap2-rs)
+[![License: CC0-1.0](https://img.shields.io/static/v1?label=License&message=CC0%201.0&color=lightgrey)](https://github.com/CodeEditorLand/Cache/tree/Current/LICENSE)
+[<img src="https://editor.land/Image/Rust.svg" width="14" alt="Rust" />](https://www.rust-lang.org/)
+[![Crates.io](https://img.shields.io/crates/v/Cache.svg)](https://crates.io/crates/Cache)
+[<img src="https://editor.land/Image/Rust.svg" width="14" alt="Rust" />](https://www.rust-lang.org/)
+[![Rust Version](https://img.shields.io/static/v1?label=Rust&message=1.95%2B&color=orange)](https://www.rust-lang.org/)
+[![Moka](https://img.shields.io/static/v1?label=Moka&message=Cache&color=blue)](https://github.com/moka-rs/moka)
+[![memmap2](https://img.shields.io/static/v1?label=memmap2&message=MMap&color=blue)](https://github.com/RazrFalcon/memmap2-rs)
 
 **[Rust API Documentation](https://rust.documentation.cache.editor.land/)**&#x2001;📖
+
+> [!NOTE]
+>
+> The header badges are served from the shields.io `/static/v1` endpoint. The
+> retired `/badge/` spellings - `License-CC0_1.0-lightgrey.svg`,
+> `Rust-1.95+-orange.svg`, `Moka-Cache-blue.svg` and `memmap2-MMap-blue.svg` -
+> break as soon as a badge message contains a slash, so they are preserved below
+> only as a provenance record of what the header used to render.
+
+**`README.md`&#x2001;- retired badge markup, superseded by `/static/v1`**
+
+```md
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://github.com/CodeEditorLand/Cache/tree/Current/LICENSE)
+[![Rust Version](https://img.shields.io/badge/Rust-1.95+-orange.svg)](https://www.rust-lang.org/)
+[![Moka](https://img.shields.io/badge/Moka-Cache-blue.svg)](https://github.com/moka-rs/moka)
+[![memmap2](https://img.shields.io/badge/memmap2-MMap-blue.svg)](https://github.com/RazrFalcon/memmap2-rs)
+```
+
+> [!NOTE]
+>
+> These four lines are the previous header markup, kept for provenance only.
 
 ---
 
@@ -96,13 +119,16 @@ operation still produces the correct result. Things just take a little longer.
 1. **Skip repeated disk reads for assets** - When the webview asks for a static
    file that's already been loaded, hand it a direct memory reference instead of
    reading the file again and copying the bytes into a new buffer.
+
 2. **Remember path resolutions** - The first time a path is canonicalised, run
    the filesystem check. After that, return the remembered answer from a hash
    table until 60 seconds have passed without anyone asking for it.
+
 3. **Keep hot data hot, let cold data expire** - Paths that get accessed
    constantly stay cached. Paths checked once during startup naturally expire
    after 60 seconds of inactivity. If someone renames a file, the old cached
    path ages out within a minute.
+
 4. **Detect and serve compressed files automatically** - When pre-compressed
    `.br` siblings exist alongside assets, Cache loads them alongside the
    original. Scheme handlers can then serve the smaller compressed version when
@@ -149,6 +175,10 @@ when files change and you want the cache to pick up new content immediately.
 
 ## Core Architecture Principles&#x2001;🏗️
 
+**These four principles define how both caches behave** - each one is
+implemented by the components named in its row, so the table doubles as a map
+from intent to code.
+
 | Principle                | Description                                                                                                                                                                             | Key Components                                                                               |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | **Zero-Copy Serving**    | Serve static assets as borrowed `&[u8]` slices of `memmap2::Mmap` regions. No per-request allocation, no kernel page cache duplication, no GC pressure.                                 | `AssetMemoryMap::Entry::Struct`, `memmap2::Mmap`, `AssetMemoryMap::Map::Fn`                  |
@@ -159,6 +189,10 @@ when files change and you want the cache to pick up new content immediately.
 ---
 
 ## System Architecture
+
+**The diagram below shows how the two caches route data** - it traces every
+request from a hot-path consumer through the cache that serves it back to the
+disk source it was loaded from.
 
 ```mermaid
 graph LR
@@ -410,8 +444,8 @@ Cache is designed to integrate with:
 This project is released into the public domain under the **Creative Commons CC0
 Universal** license. You are free to use, modify, distribute, and build upon
 this work for any purpose, without any restrictions. For the full legal text,
-see the [`LICENSE`](https://github.com/CodeEditorLand/Cache/tree/Current/LICENSE)
-file.
+see the
+[`LICENSE`](https://github.com/CodeEditorLand/Cache/tree/Current/LICENSE) file.
 
 ---
 
