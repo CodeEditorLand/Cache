@@ -1,4 +1,4 @@
-# **Cache**&#x2001;📦
+# **Cache** 📦
 
 <table>
 	<tr>
@@ -39,7 +39,7 @@
 	</tr>
 </table>
 
-Process-Wide Caching Primitives for Land&#x2001;🏞️
+Process-Wide Caching Primitives for Land 🏞️
 
 > **Every time the editor serves a static JavaScript file from the ~80 MB
 > workbench bundle, it reads the file from disk, copies the bytes into a new
@@ -61,7 +61,7 @@ Process-Wide Caching Primitives for Land&#x2001;🏞️
 [![Moka](https://img.shields.io/static/v1?label=Moka&message=Cache&color=blue)](https://github.com/moka-rs/moka)
 [![memmap2](https://img.shields.io/static/v1?label=memmap2&message=MMap&color=blue)](https://github.com/RazrFalcon/memmap2-rs)
 
-**[Rust API Documentation](https://rust.documentation.cache.editor.land/)**&#x2001;📖
+**[Rust API Documentation](https://rust.documentation.cache.editor.land/)** 📖
 
 > [!NOTE]
 >
@@ -71,7 +71,7 @@ Process-Wide Caching Primitives for Land&#x2001;🏞️
 > break as soon as a badge message contains a slash, so they are preserved below
 > only as a provenance record of what the header used to render.
 
-**`README.md`&#x2001;- retired badge markup, superseded by `/static/v1`**
+**`README.md` - retired badge markup, superseded by `/static/v1`**
 
 ```md
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://github.com/CodeEditorLand/Cache/tree/Current/LICENSE)
@@ -137,7 +137,7 @@ operation still produces the correct result. Things just take a little longer.
 
 ---
 
-## Key Features&#x2001;⚙️
+## Key Features ⚙️
 
 **Memory-Mapped Asset Cache** - The `AssetMemoryMap` is a shared, thread-safe
 dictionary that maps file paths to their contents. Each entry holds the file's
@@ -173,7 +173,7 @@ when files change and you want the cache to pick up new content immediately.
 
 ---
 
-## Core Architecture Principles&#x2001;🏗️
+## Core Architecture Principles 🏗️
 
 **These four principles define how both caches behave** - each one is
 implemented by the components named in its row, so the table doubles as a map
@@ -281,7 +281,7 @@ graph LR
 
 ---
 
-## Project Structure&#x2001;🗺️
+## Project Structure 🗺️
 
 ```
 Element/Cache/
@@ -328,10 +328,10 @@ recomputed. It never changes what happens - only how fast.
 
 | Consumer               | Cache Used       | Hot-Path Pattern                                                      |
 | ---------------------- | ---------------- | --------------------------------------------------------------------- |
-| **Mountain**&#x2001;⛰️ | `AssetMemoryMap` | Scheme handler asset serving to `Sky`/`Wind` WebView                  |
-| **Mountain**&#x2001;⛰️ | `PathCanon`      | FS-scope security gates - extension paths, git scopes, file imports   |
-| **Wind**&#x2001;🍃     | `AssetMemoryMap` | Per-body zero-copy response in `Content-Type: application/javascript` |
-| **Maintain**&#x2001;💪🏻 | `AssetMemoryMap` | Brotli sibling pre-bake - `.br` files loaded by LoadOrInsert          |
+| **Mountain** ⛰️ | `AssetMemoryMap` | Scheme handler asset serving to `Sky`/`Wind` WebView                  |
+| **Mountain** ⛰️ | `PathCanon`      | FS-scope security gates - extension paths, git scopes, file imports   |
+| **Wind** 🍃     | `AssetMemoryMap` | Per-body zero-copy response in `Content-Type: application/javascript` |
+| **Maintain** 💪🏻 | `AssetMemoryMap` | Brotli sibling pre-bake - `.br` files loaded by LoadOrInsert          |
 
 ### Key Dependencies
 
@@ -347,7 +347,7 @@ recomputed. It never changes what happens - only how fast.
 
 ---
 
-## Getting Started&#x2001;🚀
+## Getting Started 🚀
 
 ### Prerequisites
 
@@ -395,7 +395,7 @@ let Fresh = Cache::PathCanon::CanonicalizeUncached::Fn(PathBuf::from("relative/p
 
 ---
 
-## Security&#x2001;🔒
+## Security 🔒
 
 | Layer                      | Mechanism                                                                                                                               |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -412,34 +412,34 @@ Cache is designed to integrate with:
 
 | Target                 | Integration                                                                                               |
 | ---------------------- | --------------------------------------------------------------------------------------------------------- |
-| **Mountain**&#x2001;⛰️ | Primary consumer - scheme handler asset serving and fs-scope security gates                               |
-| **Wind**&#x2001;🍃     | Zero-copy response body serving via WebView scheme handlers                                               |
-| **Maintain**&#x2001;💪🏻 | Brotli sibling pre-bake pipeline - `.br` files auto-loaded by `LoadOrInsert`                              |
+| **Mountain** ⛰️ | Primary consumer - scheme handler asset serving and fs-scope security gates                               |
+| **Wind** 🍃     | Zero-copy response body serving via WebView scheme handlers                                               |
+| **Maintain** 💪🏻 | Brotli sibling pre-bake pipeline - `.br` files auto-loaded by `LoadOrInsert`                              |
 | **Any Land embedder**  | `AssetMemoryMap` and `PathCanon` are embedder-agnostic - consume from any Rust crate via cargo dependency |
 
 ---
 
 ## API Reference
 
-- **[Rust API Documentation](https://rust.documentation.cache.editor.land/)**&#x2001;📖
+- **[Rust API Documentation](https://rust.documentation.cache.editor.land/)** 📖
 
 ---
 
 ## Related Documentation
 
-- [Architecture Overview](https://Editor.Land/Doc/architecture) - Land&#x2001;🏞️
+- [Architecture Overview](https://Editor.Land/Doc/architecture) - Land 🏞️
   system architecture
-- [Mountain](https://github.com/CodeEditorLand/Mountain)&#x2001;⛰️ - Primary
+- [Mountain](https://github.com/CodeEditorLand/Mountain) ⛰️ - Primary
   consumer, Tauri native desktop shell
-- [Wind](https://github.com/CodeEditorLand/Wind)&#x2001;🍃 - Service layer
+- [Wind](https://github.com/CodeEditorLand/Wind) 🍃 - Service layer
   consuming zero-copy asset slices
-- [Maintain](https://github.com/CodeEditorLand/Maintain)&#x2001;💪🏻 - Build
+- [Maintain](https://github.com/CodeEditorLand/Maintain) 💪🏻 - Build
   system generating Brotli siblings
 - [Land Documentation Index](https://Editor.Land/Doc) - Full documentation index
 
 ---
 
-## License&#x2001;⚖️
+## License ⚖️
 
 This project is released into the public domain under the **Creative Commons CC0
 Universal** license. You are free to use, modify, distribute, and build upon
@@ -449,7 +449,7 @@ see the
 
 ---
 
-## Changelog&#x2001;📜
+## Changelog 📜
 
 Stay updated with our progress! See
 [`CHANGELOG.md`](https://github.com/CodeEditorLand/Cache/tree/Current/CHANGELOG.md)
@@ -457,9 +457,9 @@ for a history of changes.
 
 ---
 
-## Funding & Acknowledgements&#x2001;🙏🏻
+## Funding & Acknowledgements 🙏🏻
 
-**Land**&#x2001;🏞️ is proud to be an open-source endeavor. Our journey is
+**Land** 🏞️ is proud to be an open-source endeavor. Our journey is
 significantly supported by the organizations and projects that believe in the
 future of open-source software.
 
