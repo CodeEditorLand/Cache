@@ -283,7 +283,7 @@ graph LR
 
 ## Project Structure 🗺️
 
-```
+```text
 Element/Cache/
 ├── Source/
 │   ├── Library.rs                        # Crate root, module declarations

@@ -145,7 +145,7 @@ Every path below exists in the source tree. Links point to the canonical locatio
 
 ## Data Flow 📊
 
-### Asset Serving Flow
+### Asset Serving Flow 📥
 
 ```mermaid
 sequenceDiagram
@@ -168,7 +168,7 @@ sequenceDiagram
     Handler->>Handler: set Content-Encoding: br when offered
 ```
 
-### Path Resolution Flow
+### Path Resolution Flow 🗂️
 
 ```mermaid
 sequenceDiagram
